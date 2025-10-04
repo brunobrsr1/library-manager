@@ -1,15 +1,14 @@
 package bci;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Book extends Work{
     private String isbn;
-    private List<Creator> authors;
 
-    public Book(int id, String title, String isbn, List<Creator> authors) {
-        super(id, title);
+    public Book(int id, String title, int price, int copies, Category category, String isbn, List<Creator> authors) {
+        super(id, title, price, copies, category, new ArrayList<>(authors));
         this.isbn = isbn;
-        this.authors = authors;
     }
 
     public String getIsbn() {return isbn;}
