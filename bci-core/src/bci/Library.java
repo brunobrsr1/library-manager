@@ -13,13 +13,13 @@ class Library implements Serializable {
     @java.io.Serial
     private static final long serialVersionUID = 202507171003L;
 
-    private int currentDate = 0;
+    private int currentDate = 1;
 
-    /* private Map<Integer, User> users = new HashMap<>();
+    private Map<Integer, User> users = new HashMap<>();
 
     private Map<Integer, Work> works = new HashMap<>();
 
-    private Map<String, Creator> creators = new HashMap<>(); */
+    private Map<String, Creator> creators = new HashMap<>();
 
     private int nextUserId = 1;
     private int nextWorkId = 1;
