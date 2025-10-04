@@ -2,10 +2,7 @@ package bci;
 
 import bci.exceptions.*;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
+import java.io.*;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Collection;
@@ -50,6 +47,24 @@ class Library implements Serializable {
         }
     }
 
+    /**
+     * Load a Library instance from the serialized file.
+     *
+     * @param filename source file
+     * @return Library object read from file
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
+    public static Library loadFromFile(String filename) throws IOException, ClassNotFoundException {
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(filename))){
+            Object obj = in.readObject();
+            if (!(obj instanceof Library))
+                throw new IOException("File does not contain a Library object");
+            Library lib = (Library) obj;
+            lib.associatedFilename = filename;
+            return lib;
+        }
+    }
 
     /**
      * Read the text input file at the beginning of the program and populates the
